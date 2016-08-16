@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		602B663F1D62E6C5003E7306 /* UdacityUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602B663E1D62E6C5003E7306 /* UdacityUserData.swift */; };
 		606E20281D5E73B20019FA98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606E20271D5E73B20019FA98 /* AppDelegate.swift */; };
 		606E202A1D5E73B20019FA98 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606E20291D5E73B20019FA98 /* LoginViewController.swift */; };
 		606E202D1D5E73B20019FA98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606E202B1D5E73B20019FA98 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		602B663E1D62E6C5003E7306 /* UdacityUserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityUserData.swift; sourceTree = "<group>"; };
 		606E20241D5E73B20019FA98 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		606E20271D5E73B20019FA98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		606E20291D5E73B20019FA98 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				606E206D1D62BB8E0019FA98 /* Parse */,
 				606E20621D6186930019FA98 /* Udacity */,
 				606E20671D618F720019FA98 /* StudentInformation.swift */,
+				602B663E1D62E6C5003E7306 /* UdacityUserData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				606E20661D61880F0019FA98 /* UdacityClient.swift in Sources */,
+				602B663F1D62E6C5003E7306 /* UdacityUserData.swift in Sources */,
 				606E20601D6164BF0019FA98 /* MapAndList.swift in Sources */,
 				606E20641D6186D20019FA98 /* UdacityConstants.swift in Sources */,
 				606E202A1D5E73B20019FA98 /* LoginViewController.swift in Sources */,
@@ -564,6 +568,7 @@
 				606E204E1D5E73B20019FA98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		606E204F1D5E73B20019FA98 /* Build configuration list for PBXNativeTarget "OnTheMapTests" */ = {
 			isa = XCConfigurationList;
@@ -572,6 +577,7 @@
 				606E20511D5E73B20019FA98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		606E20521D5E73B20019FA98 /* Build configuration list for PBXNativeTarget "OnTheMapUITests" */ = {
 			isa = XCConfigurationList;
@@ -580,6 +586,7 @@
 				606E20541D5E73B20019FA98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

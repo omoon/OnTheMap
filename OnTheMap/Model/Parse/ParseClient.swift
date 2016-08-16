@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 class ParseClient: NSObject {
     
@@ -31,6 +32,14 @@ class ParseClient: NSObject {
             }
         }
         task.resume()
+    }
+    
+    func postMyLocation(myUdacityUserData: UdacityUserData, mapItem: MKMapItem, urlString: String) {
+        
+       let jsonBody = "{\"uniqueKey\": \"\(myUdacityUserData.key!)\", \"firstName\": \"\(myUdacityUserData.firstName!)\", \"lastName\": \"\(myUdacityUserData.lastName!)\",\"mapString\": \"\(mapItem.placemark.title!)\", \"mediaURL\": \"\(urlString)\", \"latitude\": \(mapItem.placemark.coordinate.latitude), \"longitude\": \(mapItem.placemark.coordinate.longitude)}"
+        
+        print(jsonBody)
+        
     }
     
     // MARK: GET

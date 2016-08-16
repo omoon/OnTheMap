@@ -214,16 +214,86 @@
                                             <action selector="cancel:" destination="uiZ-0M-pNQ" id="wJT-4E-s1k"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="1DK-xK-YJP"/>
+                                    <barButtonItem title="Submit" id="W9h-ih-Nah">
+                                        <connections>
+                                            <action selector="pressSubmit:" destination="uiZ-0M-pNQ" id="Udu-XE-S6A"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wqh-kB-anZ">
+                                <rect key="frame" x="20" y="86" width="560" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="heW-3X-6nu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eaf-4t-tRm">
+                                <rect key="frame" x="15" y="203" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dpR-KD-zMh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXX-M6-ctQ">
+                                <rect key="frame" x="245" y="246" width="111" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="111" id="cei-wb-PtC"/>
+                                    <constraint firstAttribute="height" constant="30" id="mis-J7-l1i"/>
+                                </constraints>
+                                <state key="normal" title="Search Location"/>
+                                <connections>
+                                    <action selector="pressSearchLocation:" destination="uiZ-0M-pNQ" eventType="touchUpInside" id="RA8-ki-E5l"/>
+                                </connections>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="q8D-wm-Rdo">
+                                <rect key="frame" x="0.0" y="300" width="600" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="U4J-KI-e28"/>
+                                </constraints>
+                            </mapView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sgr-0J-tsy">
+                                <rect key="frame" x="15" y="203" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="jt1-Oe-gEK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="iXX-M6-ctQ" firstAttribute="centerX" secondItem="o8H-Wm-oSd" secondAttribute="centerX" id="0sH-8F-SPK"/>
+                            <constraint firstItem="sgr-0J-tsy" firstAttribute="baseline" secondItem="Eaf-4t-tRm" secondAttribute="baseline" id="1lF-tu-aPS"/>
                             <constraint firstItem="GZo-F1-p2X" firstAttribute="leading" secondItem="o8H-Wm-oSd" secondAttribute="leadingMargin" constant="-20" id="9dh-QD-SPp"/>
+                            <constraint firstItem="tey-9o-KGg" firstAttribute="top" secondItem="q8D-wm-Rdo" secondAttribute="bottom" id="DaW-0o-S2R"/>
+                            <constraint firstItem="Eaf-4t-tRm" firstAttribute="leading" secondItem="o8H-Wm-oSd" secondAttribute="leadingMargin" constant="-5" id="EAA-xK-78M"/>
+                            <constraint firstItem="sgr-0J-tsy" firstAttribute="trailing" secondItem="Eaf-4t-tRm" secondAttribute="trailing" id="HAk-5Z-PmU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GZo-F1-p2X" secondAttribute="trailing" constant="-20" id="IXV-1u-btR"/>
+                            <constraint firstItem="Eaf-4t-tRm" firstAttribute="top" secondItem="Wqh-kB-anZ" secondAttribute="bottom" constant="37" id="KFF-8F-EGx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="q8D-wm-Rdo" secondAttribute="trailing" constant="-20" id="MsY-FE-qtv"/>
                             <constraint firstItem="GZo-F1-p2X" firstAttribute="top" secondItem="X5Y-Gb-4hl" secondAttribute="bottom" id="a1q-Is-emY"/>
+                            <constraint firstItem="Wqh-kB-anZ" firstAttribute="leading" secondItem="o8H-Wm-oSd" secondAttribute="leadingMargin" id="adh-9d-YdK"/>
+                            <constraint firstItem="Wqh-kB-anZ" firstAttribute="trailing" secondItem="o8H-Wm-oSd" secondAttribute="trailingMargin" id="lzt-bc-798"/>
+                            <constraint firstItem="q8D-wm-Rdo" firstAttribute="leading" secondItem="o8H-Wm-oSd" secondAttribute="leadingMargin" constant="-20" id="py6-JP-lmB"/>
+                            <constraint firstItem="iXX-M6-ctQ" firstAttribute="top" secondItem="Eaf-4t-tRm" secondAttribute="bottom" constant="13" id="raS-Gg-o21"/>
+                            <constraint firstItem="sgr-0J-tsy" firstAttribute="leading" secondItem="Eaf-4t-tRm" secondAttribute="leading" id="t24-b1-Q0h"/>
+                            <constraint firstItem="Eaf-4t-tRm" firstAttribute="trailing" secondItem="o8H-Wm-oSd" secondAttribute="trailingMargin" constant="-5" id="yE6-EM-Nyu"/>
+                            <constraint firstItem="Wqh-kB-anZ" firstAttribute="top" secondItem="GZo-F1-p2X" secondAttribute="bottom" constant="22" id="zJV-aL-sjB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="locationTextField" destination="Eaf-4t-tRm" id="HNO-aR-ZCw"/>
+                        <outlet property="mapView" destination="q8D-wm-Rdo" id="Lig-RF-VLV"/>
+                        <outlet property="nameLabel" destination="Wqh-kB-anZ" id="4oP-DL-DTc"/>
+                        <outlet property="searchLocationButton" destination="iXX-M6-ctQ" id="4dO-kp-Rkq"/>
+                        <outlet property="submitButton" destination="W9h-ih-Nah" id="iU2-eo-cVx"/>
+                        <outlet property="urlTextField" destination="sgr-0J-tsy" id="qH0-zn-FtN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="om7-O6-Wjt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

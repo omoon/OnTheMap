@@ -13,6 +13,7 @@
 		602B66471D640E25003E7306 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 602B66441D640E25003E7306 /* Roboto-Regular.ttf */; };
 		602B66481D640E25003E7306 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 602B66451D640E25003E7306 /* Roboto-Thin.ttf */; };
 		602B664E1D641B3D003E7306 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602B664D1D641B3D003E7306 /* LoginTextField.swift */; };
+		602B66501D642F2A003E7306 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602B664F1D642F2A003E7306 /* Alert.swift */; };
 		606E20281D5E73B20019FA98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606E20271D5E73B20019FA98 /* AppDelegate.swift */; };
 		606E202A1D5E73B20019FA98 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606E20291D5E73B20019FA98 /* LoginViewController.swift */; };
 		606E202D1D5E73B20019FA98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606E202B1D5E73B20019FA98 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		602B66441D640E25003E7306 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		602B66451D640E25003E7306 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		602B664D1D641B3D003E7306 /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
+		602B664F1D642F2A003E7306 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		606E20241D5E73B20019FA98 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		606E20271D5E73B20019FA98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		606E20291D5E73B20019FA98 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				602B664D1D641B3D003E7306 /* LoginTextField.swift */,
+				602B664F1D642F2A003E7306 /* Alert.swift */,
+				602B66401D63F2FA003E7306 /* Loading.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -195,7 +199,6 @@
 				606E205B1D5E8A630019FA98 /* ListViewController.swift */,
 				606E205D1D6072B10019FA98 /* InformationPostingViewController.swift */,
 				606E205F1D6164BF0019FA98 /* MapAndList.swift */,
-				602B66401D63F2FA003E7306 /* Loading.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				606E20561D5E75170019FA98 /* MapViewController.swift in Sources */,
 				606E20681D618F720019FA98 /* StudentInformation.swift in Sources */,
 				606E20281D5E73B20019FA98 /* AppDelegate.swift in Sources */,
+				602B66501D642F2A003E7306 /* Alert.swift in Sources */,
 				606E205C1D5E8A630019FA98 /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

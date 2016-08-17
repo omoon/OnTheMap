@@ -36,12 +36,8 @@ class LoginViewController: UIViewController {
                 if success {
                     self.completeLogin()
                 } else {
-                    let alertController = UIAlertController.init(title: "Error", message: errorString, preferredStyle: .Alert)
-                    let alertAction = UIAlertAction.init(title: "OK", style: .Default, handler: nil)
-                    alertController.addAction(alertAction)
-                    self.presentViewController(alertController, animated: true, completion: nil)
+                    self.presentViewController(self.createAlert("Error", message: "Invalid username or password.\nTry again, please😊"), animated: true, completion: nil)
                 }
-                
                 self.enableInputElements(true)
                 Loading.finishLoading()
             }

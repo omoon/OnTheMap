@@ -48,6 +48,7 @@ class ParseClient: NSObject {
                 completionHander(success: true, errorString: nil)
             } else {
                 print(error)
+                completionHander(success: false, errorString: "Could not fetch locations.")
             }
         }
         task.resume()

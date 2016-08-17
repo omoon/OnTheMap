@@ -31,6 +31,10 @@ class ListViewController: UITableViewController, MapAndList {
             performUIUpdatesOnMain({ 
                 if success {
                     self.tableView.reloadData()
+                } else {
+                    performUIUpdatesOnMain({
+                        self.presentViewController(self.createAlert("Error", message: "Could not fetch locations."), animated: true, completion: nil)
+                    })
                 }
                 Loading.finishLoading()
             })
@@ -65,4 +69,7 @@ class ListViewController: UITableViewController, MapAndList {
         self.doLogOut()
     }
     
+    @IBAction func pressRefresh(sender: AnyObject) {
+        refreshStudentLocatons()
+    }
 }

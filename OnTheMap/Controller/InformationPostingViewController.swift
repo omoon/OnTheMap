@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class InformationPostingViewController: UIViewController, MKMapViewDelegate {
+class InformationPostingViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate {
     
     var test: Int = 0
     var mapItem: MKMapItem? = nil
@@ -22,14 +22,22 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var urlTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchLocationButton: UIButton!
-    @IBOutlet weak var submitButton: UIBarButtonItem!
-
+    @IBOutlet weak var submitButton: UIButton!
+    
     override func viewDidLoad() {
         displaySearchLocationView()
+        locationTextField.delegate = self
+        urlTextField.delegate = self
     }
     
     private func displaySearchLocationView() {
-        nameLabel.text = "Hi, \(udacityClient.myUserData?.firstName!)!\nWhere are you studying today?"
+        
+        var message = ""
+        if let firstName = udacityClient.myUserData?.firstName {
+            message = "Hi, \(firstName)!"
+        }
+        
+        nameLabel.text = "\(message)\nWhere are you studying today?"
         locationTextField.hidden = false
         searchLocationButton.hidden = false
         urlTextField.hidden = true
@@ -44,7 +52,7 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate {
         searchLocationButton.hidden = true
         urlTextField.hidden = false
         mapView.hidden = false
-//        mapView.showAnnotations(mapView.annotations, animated: true)
+        //        mapView.showAnnotations(mapView.annotations, animated: true)
         mapView.selectAnnotation(mapView.annotations[0], animated: true)
         submitButton.enabled = true
     }
@@ -54,6 +62,8 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func pressSearchLocation(sender: AnyObject) {
+        
+        view.endEditing(true)
         
         Loading.startLoading()
         self.mapView.removeAnnotations(self.mapView.annotations)
@@ -70,34 +80,53 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate {
         let search = MKLocalSearch(request: request)
         
         search.startWithCompletionHandler { (response, error) in
-            guard let response = response else {
+            if let error = error {
                 print("There was an error searching for: \(request.naturalLanguageQuery) error: \(error)")
-                return
+                performUIUpdatesOnMain({ 
+                    self.presentViewController(self.createAlert("Location Not Found", message: "Try again, please😊"), animated: true, completion: nil)
+                })
+            } else {
+                for item in response!.mapItems {
+                    // Display the received items
+                    
+                    self.mapItem = item
+                    
+                    let coordinate = item.placemark.coordinate
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = coordinate
+                    annotation.title = item.placemark.title!
+                    self.mapView.addAnnotation(annotation)
+                    self.mapView.setCenterCoordinate(annotation.coordinate, animated: true)
+                    
+                    break
+                }
+                performUIUpdatesOnMain({
+                    self.displayURLInputView()
+                })
             }
             
-            for item in response.mapItems {
-                // Display the received items
-                
-                self.mapItem = item
-                
-                let coordinate = item.placemark.coordinate
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = coordinate
-                annotation.title = item.placemark.title!
-                self.mapView.addAnnotation(annotation)
-                self.mapView.setCenterCoordinate(annotation.coordinate, animated: true)
-                
-                break
-            }
-            self.displayURLInputView()
             Loading.finishLoading()
+            
         }
     }
     
     @IBAction func pressSubmit(sender: AnyObject) {
+        Loading.startLoading()
         parseClient.postMyLocation(udacityClient.myUserData!, mapItem: mapItem!, urlString: urlTextField.text!) { (success, errorString) in
-            self.dismissViewControllerAnimated(true, completion: nil)
+            Loading.finishLoading()
+            if success {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                performUIUpdatesOnMain({
+                    self.presentViewController(self.createAlert("Error", message: "Could not submit your location.\nTry again, please😊"), animated: true, completion: nil)
+                })
+            }
         }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
 }

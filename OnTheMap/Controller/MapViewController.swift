@@ -18,13 +18,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, MapAndList {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+        refreshStudentLocatons()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        refreshStudentLocatons()
     }
     
     func refreshStudentLocatons() {
@@ -34,6 +32,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, MapAndList {
             performUIUpdatesOnMain({
                 if success {
                     self.drawAnnotation()
+                } else {
+                    performUIUpdatesOnMain({ 
+                        self.presentViewController(self.createAlert("Error", message: "Could not fetch locations."), animated: true, completion: nil)
+                    })
                 }
                 Loading.finishLoading()
             })
@@ -82,6 +84,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, MapAndList {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let informationPostingViewController = segue.destinationViewController as! InformationPostingViewController
         informationPostingViewController.test = 2
+    }
+    
+    @IBAction func pressRefresh(sender: AnyObject) {
+        refreshStudentLocatons()
     }
     
     @IBAction func editInfo(sender: AnyObject) {

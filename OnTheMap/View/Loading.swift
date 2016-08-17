@@ -16,12 +16,20 @@ class Loading {
         loadingView.backgroundColor = UIColor.grayColor()
         loadingView.alpha = 0.5
         
+        // I want to add some animation on this view, but...
+        
 //        let groupAnimation = CAAnimationGroup()
 //        groupAnimation.animations = [Loading.alphaAnimation()]
 //        groupAnimation.duration = 0.2
 //        groupAnimation.autoreverses = true
 //        groupAnimation.repeatDuration = 0.1
 //        loadingView.layer.addAnimation(groupAnimation, forKey: "alphaAnimation")
+        
+        let textLabel = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: screenSize.width, height: screenSize.height))
+        textLabel.textAlignment = NSTextAlignment.Center
+        textLabel.text = "Loading.."
+        loadingView.center = textLabel.center
+        loadingView.addSubview(textLabel)
         
         return loadingView
     }()

@@ -27,10 +27,18 @@ class UdacityClient: NSObject {
         self.myAccountKey = nil
     }
     
+    func loginWithFaceBookLogin(accessToken: String, completionHandlerForAuth: (success: Bool, errorString: String?) -> Void) {
+        let jsonBody = "{\"facebook_mobile\": {\"access_token\": \"\(accessToken)\"}}"
+        doLogin(jsonBody, completionHandlerForAuth: completionHandlerForAuth)
+    }
+    
     func loginWithUsernameAndPassword(loginViewController: LoginViewController, completionHandlerForAuth: (success: Bool, errorString: String?) -> Void) {
-        
         let jsonBody = "{\"udacity\": {\"username\": \"\(loginViewController.textFieldUsername.text!)\", \"password\": \"\(loginViewController.textFieldPassword.text!)\"}}"
-        
+        doLogin(jsonBody, completionHandlerForAuth: completionHandlerForAuth)
+    }
+    
+    private func doLogin(jsonBody: String, completionHandlerForAuth: (success: Bool, errorString: String?) -> Void) {
+    
         let task = taskForPOSTMethod(Methods.Session, parameters: [:], jsonBody: jsonBody) { (results, error) in
             if error == nil {
                 

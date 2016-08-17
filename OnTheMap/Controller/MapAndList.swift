@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 protocol MapAndList {
     func openURL(urlString: String)
@@ -31,6 +32,11 @@ extension MapAndList where Self: UIViewController {
         let confirmView = UIAlertController.init(title: nil, message: "Do you really want to logout?", preferredStyle: .Alert)
         confirmView.addAction(UIAlertAction.init(title: "Yes", style: .Default, handler: { (action) in
             UdacityClient.sharedInstance.logOut()
+            
+            // facebook logout
+            let fbLoginManager = FBSDKLoginManager.init()
+            fbLoginManager.logOut()
+            
             self.tabBarController?.dismissViewControllerAnimated(true, completion: nil)
         }))
         confirmView.addAction(UIAlertAction.init(title: "No", style: .Cancel, handler: nil))

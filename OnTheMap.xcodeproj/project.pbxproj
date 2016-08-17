@@ -31,6 +31,9 @@
 		606E206A1D629DF20019FA98 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606E20691D629DF20019FA98 /* GCDBlackBox.swift */; };
 		606E206F1D62BBA30019FA98 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606E206E1D62BBA30019FA98 /* ParseClient.swift */; };
 		606E20711D62BBEF0019FA98 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606E20701D62BBEF0019FA98 /* ParseConstants.swift */; };
+		60D699681D644FE400E6D00B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D699671D644FE400E6D00B /* FBSDKLoginKit.framework */; };
+		60D6996B1D64546F00E6D00B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D6996A1D64546F00E6D00B /* FBSDKCoreKit.framework */; };
+		60D6996D1D64568000E6D00B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D6996C1D64568000E6D00B /* Bolts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,10 @@
 		606E20691D629DF20019FA98 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		606E206E1D62BBA30019FA98 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		606E20701D62BBEF0019FA98 /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
+		60D699671D644FE400E6D00B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		60D699691D64530000E6D00B /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		60D6996A1D64546F00E6D00B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		60D6996C1D64568000E6D00B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +95,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60D6996D1D64568000E6D00B /* Bolts.framework in Frameworks */,
+				60D699681D644FE400E6D00B /* FBSDKLoginKit.framework in Frameworks */,
+				60D6996B1D64546F00E6D00B /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +161,7 @@
 		606E20261D5E73B20019FA98 /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				60D699661D644F9B00E6D00B /* Frameworks */,
 				602B664C1D641B2A003E7306 /* View */,
 				602B66421D640DD7003E7306 /* Font */,
 				606E20271D5E73B20019FA98 /* AppDelegate.swift */,
@@ -159,6 +170,7 @@
 				606E20581D5E78730019FA98 /* Controller */,
 				606E20571D5E77D10019FA98 /* Assets */,
 				606E20331D5E73B20019FA98 /* Info.plist */,
+				60D699691D64530000E6D00B /* Bridging-Header.h */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -230,6 +242,16 @@
 				606E20701D62BBEF0019FA98 /* ParseConstants.swift */,
 			);
 			path = Parse;
+			sourceTree = "<group>";
+		};
+		60D699661D644F9B00E6D00B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				60D6996C1D64568000E6D00B /* Bolts.framework */,
+				60D6996A1D64546F00E6D00B /* FBSDKCoreKit.framework */,
+				60D699671D644FE400E6D00B /* FBSDKLoginKit.framework */,
+			);
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -477,6 +499,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "OnTheMap/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -516,6 +539,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "OnTheMap/Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -525,6 +549,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OnTheMap/Frameworks",
+				);
 				INFOPLIST_FILE = OnTheMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lamolabo.OnTheMap;
@@ -536,6 +564,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OnTheMap/Frameworks",
+				);
 				INFOPLIST_FILE = OnTheMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lamolabo.OnTheMap;

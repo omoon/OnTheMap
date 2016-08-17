@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		602B663F1D62E6C5003E7306 /* UdacityUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602B663E1D62E6C5003E7306 /* UdacityUserData.swift */; };
+		602B66411D63F2FA003E7306 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602B66401D63F2FA003E7306 /* Loading.swift */; };
+		602B66461D640E25003E7306 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 602B66431D640E25003E7306 /* Roboto-Medium.ttf */; };
+		602B66471D640E25003E7306 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 602B66441D640E25003E7306 /* Roboto-Regular.ttf */; };
+		602B66481D640E25003E7306 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 602B66451D640E25003E7306 /* Roboto-Thin.ttf */; };
+		602B664E1D641B3D003E7306 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602B664D1D641B3D003E7306 /* LoginTextField.swift */; };
 		606E20281D5E73B20019FA98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606E20271D5E73B20019FA98 /* AppDelegate.swift */; };
 		606E202A1D5E73B20019FA98 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606E20291D5E73B20019FA98 /* LoginViewController.swift */; };
 		606E202D1D5E73B20019FA98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606E202B1D5E73B20019FA98 /* Main.storyboard */; };
@@ -46,6 +51,11 @@
 
 /* Begin PBXFileReference section */
 		602B663E1D62E6C5003E7306 /* UdacityUserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityUserData.swift; sourceTree = "<group>"; };
+		602B66401D63F2FA003E7306 /* Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
+		602B66431D640E25003E7306 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		602B66441D640E25003E7306 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		602B66451D640E25003E7306 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		602B664D1D641B3D003E7306 /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		606E20241D5E73B20019FA98 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		606E20271D5E73B20019FA98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		606E20291D5E73B20019FA98 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +106,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		602B66421D640DD7003E7306 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				602B66431D640E25003E7306 /* Roboto-Medium.ttf */,
+				602B66441D640E25003E7306 /* Roboto-Regular.ttf */,
+				602B66451D640E25003E7306 /* Roboto-Thin.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		602B664C1D641B2A003E7306 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				602B664D1D641B3D003E7306 /* LoginTextField.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		606E201B1D5E73B20019FA98 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +147,8 @@
 		606E20261D5E73B20019FA98 /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				602B664C1D641B2A003E7306 /* View */,
+				602B66421D640DD7003E7306 /* Font */,
 				606E20271D5E73B20019FA98 /* AppDelegate.swift */,
 				606E20691D629DF20019FA98 /* GCDBlackBox.swift */,
 				606E20611D6186660019FA98 /* Model */,
@@ -165,6 +195,7 @@
 				606E205B1D5E8A630019FA98 /* ListViewController.swift */,
 				606E205D1D6072B10019FA98 /* InformationPostingViewController.swift */,
 				606E205F1D6164BF0019FA98 /* MapAndList.swift */,
+				602B66401D63F2FA003E7306 /* Loading.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -302,7 +333,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				602B66461D640E25003E7306 /* Roboto-Medium.ttf in Resources */,
 				606E20321D5E73B20019FA98 /* LaunchScreen.storyboard in Resources */,
+				602B66481D640E25003E7306 /* Roboto-Thin.ttf in Resources */,
+				602B66471D640E25003E7306 /* Roboto-Regular.ttf in Resources */,
 				606E202F1D5E73B20019FA98 /* Assets.xcassets in Resources */,
 				606E202D1D5E73B20019FA98 /* Main.storyboard in Resources */,
 			);
@@ -333,10 +367,12 @@
 				602B663F1D62E6C5003E7306 /* UdacityUserData.swift in Sources */,
 				606E20601D6164BF0019FA98 /* MapAndList.swift in Sources */,
 				606E20641D6186D20019FA98 /* UdacityConstants.swift in Sources */,
+				602B66411D63F2FA003E7306 /* Loading.swift in Sources */,
 				606E202A1D5E73B20019FA98 /* LoginViewController.swift in Sources */,
 				606E206A1D629DF20019FA98 /* GCDBlackBox.swift in Sources */,
 				606E206F1D62BBA30019FA98 /* ParseClient.swift in Sources */,
 				606E205E1D6072B10019FA98 /* InformationPostingViewController.swift in Sources */,
+				602B664E1D641B3D003E7306 /* LoginTextField.swift in Sources */,
 				606E20711D62BBEF0019FA98 /* ParseConstants.swift in Sources */,
 				606E20561D5E75170019FA98 /* MapViewController.swift in Sources */,
 				606E20681D618F720019FA98 /* StudentInformation.swift in Sources */,

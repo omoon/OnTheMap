@@ -5,6 +5,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Thin.ttf">
+            <string>Roboto-Thin</string>
+            <string>Roboto-Thin</string>
+            <string>Roboto-Thin</string>
+            <string>Roboto-Thin</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -18,44 +26,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uws-eL-22d">
-                                <rect key="frame" x="200" y="121" width="200" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="HQL-9o-Uh2"/>
-                                    <constraint firstAttribute="height" constant="30" id="Q9h-xt-a49"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uws-eL-22d" customClass="LoginTextField" customModule="OnTheMap" customModuleProvider="target">
+                                <rect key="frame" x="20" y="121" width="560" height="30"/>
+                                <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eal-yk-egL">
-                                <rect key="frame" x="200" y="181" width="200" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="ZwE-Wj-lhN"/>
-                                    <constraint firstAttribute="width" constant="200" id="fNe-Oi-ifA"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="20" y="167" width="560" height="30"/>
+                                <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="udacity" translatesAutoresizingMaskIntoConstraints="NO" id="1uj-nw-dbx">
+                                <rect key="frame" x="260" y="0.0" width="80" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="PVV-yn-aLk"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rl-C7-9Bi">
-                                <rect key="frame" x="281" y="285" width="38" height="30"/>
-                                <state key="normal" title="Login"/>
+                                <rect key="frame" x="269" y="222" width="63" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="8wn-r7-Xi1"/>
+                                    <constraint firstAttribute="width" constant="63" id="mQR-cQ-mWv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="22"/>
+                                <state key="normal" title="LOGIN"/>
                                 <connections>
                                     <action selector="pressLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RHf-Sy-1cf"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96615457214765099" green="0.96504524882564102" blue="0.96460028995718061" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.15686274509803921" green="0.63921568627450975" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="5rl-C7-9Bi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6nM-2J-r0h"/>
                             <constraint firstItem="uws-eL-22d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9VK-qr-0uL"/>
-                            <constraint firstItem="5rl-C7-9Bi" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="NRp-GG-HTo"/>
-                            <constraint firstItem="Eal-yk-egL" firstAttribute="top" secondItem="uws-eL-22d" secondAttribute="bottom" constant="30" id="TH5-Se-lIe"/>
+                            <constraint firstItem="Eal-yk-egL" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Ele-Em-fy9"/>
+                            <constraint firstItem="Eal-yk-egL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="NmX-bT-wt1"/>
+                            <constraint firstItem="Eal-yk-egL" firstAttribute="top" secondItem="uws-eL-22d" secondAttribute="bottom" constant="16" id="TH5-Se-lIe"/>
                             <constraint firstItem="uws-eL-22d" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="101" id="V6A-qU-bdw"/>
-                            <constraint firstItem="5rl-C7-9Bi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hXq-K3-Hod"/>
+                            <constraint firstItem="1uj-nw-dbx" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="Xug-6s-XcH"/>
+                            <constraint firstItem="5rl-C7-9Bi" firstAttribute="top" secondItem="Eal-yk-egL" secondAttribute="bottom" constant="25" id="adL-mS-hST"/>
+                            <constraint firstItem="uws-eL-22d" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="fFO-km-Qty"/>
+                            <constraint firstItem="1uj-nw-dbx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fuh-aA-W5N"/>
+                            <constraint firstItem="uws-eL-22d" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="h4t-J1-y26"/>
                             <constraint firstItem="Eal-yk-egL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kdZ-SW-hfo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bGC-7Q-zoT"/>
                     <connections>
+                        <outlet property="loginButton" destination="5rl-C7-9Bi" id="9vn-aB-IQp"/>
                         <outlet property="textFieldPassword" destination="Eal-yk-egL" id="EV6-bs-OEY"/>
                         <outlet property="textFieldUsername" destination="uws-eL-22d" id="GaT-g8-urN"/>
                         <segue destination="E4Z-E0-LOI" kind="presentation" identifier="toMainView" modalTransitionStyle="crossDissolve" id="Zw3-fX-BZh"/>
@@ -98,7 +118,7 @@
                                 <action selector="logOut:" destination="Fxc-y5-KRw" id="ONc-UX-Otb"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="9Se-Qw-l3j">
+                        <barButtonItem key="rightBarButtonItem" image="pin" id="9Se-Qw-l3j">
                             <connections>
                                 <action selector="editInfo:" destination="Fxc-y5-KRw" id="Z1S-q2-Lm6"/>
                             </connections>
@@ -124,6 +144,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.15686274510000001" green="0.63921568630000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="Zxz-OS-jhk" kind="relationship" relationship="viewControllers" id="FXE-xl-b0l"/>
@@ -179,7 +204,7 @@
                                 <action selector="logOut:" destination="Gf4-IM-1vr" id="mlP-fM-eyx"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="p1R-B0-Mki">
+                        <barButtonItem key="rightBarButtonItem" image="pin" id="p1R-B0-Mki">
                             <connections>
                                 <action selector="editInfo:" destination="Gf4-IM-1vr" id="oxC-ov-bMx"/>
                             </connections>
@@ -227,7 +252,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="heW-3X-6nu"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -303,7 +328,7 @@
         <scene sceneID="7M0-jd-XFm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zxz-OS-jhk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="map" id="YnN-Ql-erM"/>
+                    <tabBarItem key="tabBarItem" title="map" image="map" selectedImage="map" id="YnN-Ql-erM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hk5-e9-7ZC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -322,7 +347,7 @@
         <scene sceneID="jD8-tq-ZsA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mkD-C1-rDA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" id="4hc-Q8-HP5"/>
+                    <tabBarItem key="tabBarItem" title="List" image="list" selectedImage="list" id="4hc-Q8-HP5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ilx-as-Rqo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -338,7 +363,14 @@
             <point key="canvasLocation" x="2704" y="147"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="list" width="32" height="32"/>
+        <image name="map" width="32" height="32"/>
+        <image name="pin" width="32" height="32"/>
+        <image name="udacity" width="80" height="80"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2wk-CL-jPU"/>
+        <segue reference="09m-GF-RbN"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.15686274509803921" green="0.63921568627450975" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
 </document>

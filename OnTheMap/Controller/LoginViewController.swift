@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var textFieldUsername: UITextField!
     @IBOutlet weak var textFieldPassword: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,16 +27,13 @@ class LoginViewController: UIViewController {
     @IBAction func pressLogin(sender: AnyObject) {
         
         let udacityClient = UdacityClient.sharedInstance
-        let parseClient = ParseClient.sharedInstance
+        
+        Loading.startLoading()
+        self.enableInputElements(false)
         
         udacityClient.loginWithUsernameAndPassword(self) { (success, errorString) in
             performUIUpdatesOnMain {
                 if success {
-                    
-                    print(udacityClient.sessionID)
-                    print(udacityClient.myAccountKey)
-                    print(parseClient.studentLocations)
-                    
                     self.completeLogin()
                 } else {
                     let alertController = UIAlertController.init(title: "Error", message: errorString, preferredStyle: .Alert)
@@ -43,11 +41,20 @@ class LoginViewController: UIViewController {
                     alertController.addAction(alertAction)
                     self.presentViewController(alertController, animated: true, completion: nil)
                 }
+                
+                self.enableInputElements(true)
+                Loading.finishLoading()
             }
         }
     }
     
-    func completeLogin() {
+    private func enableInputElements(enabled: Bool) {
+        self.textFieldUsername.enabled = enabled
+        self.textFieldPassword.enabled = enabled
+        self.loginButton.enabled = enabled
+    }
+    
+    private func completeLogin() {
         self.performSegueWithIdentifier("toMainView", sender: self)
     }
 

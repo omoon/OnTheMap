@@ -16,8 +16,25 @@ class ListViewController: UITableViewController, MapAndList {
     
     @IBOutlet weak var buttonEditInfo: UIBarButtonItem!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        refreshStudentLocatons()
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    func refreshStudentLocatons() {
+        Loading.startLoading()
+        reloadStudentLocations { (success, errorString) in
+            performUIUpdatesOnMain({ 
+                if success {
+                    self.tableView.reloadData()
+                }
+                Loading.finishLoading()
+            })
+        }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,7 +44,7 @@ class ListViewController: UITableViewController, MapAndList {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("listTableViewCell", forIndexPath: indexPath) as UITableViewCell!
         cell.textLabel!.text = parseClient.studentLocations[indexPath.row].name()
-        cell.detailTextLabel?.text = parseClient.studentLocations[indexPath.row].mediaURL
+        cell.detailTextLabel?.text = parseClient.studentLocations[indexPath.row].mapString
         return cell
     }
     

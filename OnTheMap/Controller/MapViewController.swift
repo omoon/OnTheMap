@@ -20,8 +20,28 @@ class MapViewController: UIViewController, MKMapViewDelegate, MapAndList {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        for studentInfo in parseClient.studentLocations {
-            
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshStudentLocatons()
+    }
+    
+    func refreshStudentLocatons() {
+        Loading.startLoading()
+        mapView.removeAnnotations(mapView.annotations)
+        reloadStudentLocations { (success, errorString) in
+            performUIUpdatesOnMain({
+                if success {
+                    self.drawAnnotation()
+                }
+                Loading.finishLoading()
+            })
+        }
+    }
+    
+    private func drawAnnotation() {
+        for studentInfo in self.parseClient.studentLocations {
             if let latitude = studentInfo.latitude, let longitude = studentInfo.longitude {
                 // The lat and long are used to create a CLLocationCoordinates2D instance.
                 let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
@@ -29,11 +49,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, MapAndList {
                 annotation.coordinate = coordinate
                 annotation.title = studentInfo.name()
                 annotation.subtitle = studentInfo.mediaURL
-                mapView.addAnnotation(annotation)
+                self.mapView.addAnnotation(annotation)
             }
-            
         }
-        
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {

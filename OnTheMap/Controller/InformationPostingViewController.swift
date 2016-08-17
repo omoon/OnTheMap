@@ -44,6 +44,8 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate {
         searchLocationButton.hidden = true
         urlTextField.hidden = false
         mapView.hidden = false
+//        mapView.showAnnotations(mapView.annotations, animated: true)
+        mapView.selectAnnotation(mapView.annotations[0], animated: true)
         submitButton.enabled = true
     }
     
@@ -53,6 +55,7 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func pressSearchLocation(sender: AnyObject) {
         
+        Loading.startLoading()
         self.mapView.removeAnnotations(self.mapView.annotations)
         
         guard let locationString = locationTextField.text else {
@@ -87,11 +90,14 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate {
                 break
             }
             self.displayURLInputView()
+            Loading.finishLoading()
         }
     }
     
     @IBAction func pressSubmit(sender: AnyObject) {
-        parseClient.postMyLocation(udacityClient.myUserData!, mapItem: mapItem!, urlString: urlTextField.text!)
+        parseClient.postMyLocation(udacityClient.myUserData!, mapItem: mapItem!, urlString: urlTextField.text!) { (success, errorString) in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
 }

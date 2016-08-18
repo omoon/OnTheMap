@@ -52,20 +52,19 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
         searchLocationButton.hidden = true
         urlTextField.hidden = false
         mapView.hidden = false
-        //        mapView.showAnnotations(mapView.annotations, animated: true)
         mapView.selectAnnotation(mapView.annotations[0], animated: true)
         submitButton.enabled = true
     }
 
     @IBAction func cancel(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     @IBAction func pressSearchLocation(sender: AnyObject) {
 
         view.endEditing(true)
-
         Loading.startLoading()
+
         self.mapView.removeAnnotations(self.mapView.annotations)
 
         guard let locationString = locationTextField.text else {
@@ -88,16 +87,16 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
                 })
             } else {
                 for item in response!.mapItems {
+
                     // Display the received items
-
                     self.mapItem = item
-
                     let coordinate = item.placemark.coordinate
                     let annotation = MKPointAnnotation()
                     annotation.coordinate = coordinate
                     annotation.title = item.placemark.title!
                     self.mapView.addAnnotation(annotation)
                     self.mapView.setCenterCoordinate(annotation.coordinate, animated: true)
+                    self.mapView.camera.altitude = 10000.0
 
                     break
                 }

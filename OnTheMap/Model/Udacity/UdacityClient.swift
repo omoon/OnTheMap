@@ -13,7 +13,7 @@ import Foundation
 
 class UdacityClient: NSObject {
 
-    static let sharedInstance = UdacityClient()
+    static let sharedInstance: UdacityClient = UdacityClient()
 
     // shared session
     var session = NSURLSession.sharedSession()

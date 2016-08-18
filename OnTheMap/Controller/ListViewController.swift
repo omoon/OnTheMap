@@ -12,7 +12,7 @@ class ListViewController: UITableViewController, MapAndList {
 
     var selectedRow: Int!
 
-    let parseClient = ParseClient.sharedInstance
+    let studentLocations = StudentLocations.sharedInstance
 
     @IBOutlet weak var buttonEditInfo: UIBarButtonItem!
 
@@ -43,18 +43,18 @@ class ListViewController: UITableViewController, MapAndList {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return parseClient.studentLocations.count
+        return studentLocations.locations.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("listTableViewCell", forIndexPath: indexPath) as UITableViewCell!
-        cell.textLabel!.text = parseClient.studentLocations[indexPath.row].name()
-        cell.detailTextLabel?.text = parseClient.studentLocations[indexPath.row].mapString
+        cell.textLabel!.text = studentLocations.locations[indexPath.row].name()
+        cell.detailTextLabel?.text = studentLocations.locations[indexPath.row].mapString
         return cell
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        openURL(parseClient.studentLocations[indexPath.row].mediaURL!)
+        openURL(studentLocations.locations[indexPath.row].mediaURL!)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

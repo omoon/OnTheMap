@@ -34,6 +34,7 @@
 		60D699681D644FE400E6D00B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D699671D644FE400E6D00B /* FBSDKLoginKit.framework */; };
 		60D6996B1D64546F00E6D00B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D6996A1D64546F00E6D00B /* FBSDKCoreKit.framework */; };
 		60D6996D1D64568000E6D00B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D6996C1D64568000E6D00B /* Bolts.framework */; };
+		64F6BF2CAE120E678BF910E4 /* StudentLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6B36FD89D131D0CC8FA43 /* StudentLocations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		60D699691D64530000E6D00B /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		60D6996A1D64546F00E6D00B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		60D6996C1D64568000E6D00B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		64F6B36FD89D131D0CC8FA43 /* StudentLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 				606E20621D6186930019FA98 /* Udacity */,
 				606E20671D618F720019FA98 /* StudentInformation.swift */,
 				602B663E1D62E6C5003E7306 /* UdacityUserData.swift */,
+				64F6B36FD89D131D0CC8FA43 /* StudentLocations.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				606E20281D5E73B20019FA98 /* AppDelegate.swift in Sources */,
 				602B66501D642F2A003E7306 /* Alert.swift in Sources */,
 				606E205C1D5E8A630019FA98 /* ListViewController.swift in Sources */,
+				64F6BF2CAE120E678BF910E4 /* StudentLocations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

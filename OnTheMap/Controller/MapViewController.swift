@@ -11,21 +11,19 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate, MapAndList {
 
-    let parseClient = ParseClient.sharedInstance
-
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var buttonEditInfo: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        refreshStudentLocatons()
+        refreshStudentLocations()
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
     }
 
-    func refreshStudentLocatons() {
+    func refreshStudentLocations() {
         Loading.startLoading()
         mapView.removeAnnotations(mapView.annotations)
         reloadStudentLocations {
@@ -44,7 +42,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, MapAndList {
     }
 
     private func drawAnnotation() {
-        for studentInfo in self.parseClient.studentLocations {
+        let studentLocations = StudentLocations.sharedInstance
+        for studentInfo in studentLocations.locations {
             if let latitude = studentInfo.latitude, let longitude = studentInfo.longitude {
                 // The lat and long are used to create a CLLocationCoordinates2D instance.
                 let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
@@ -87,7 +86,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, MapAndList {
     }
 
     @IBAction func pressRefresh(sender: AnyObject) {
-        refreshStudentLocatons()
+        refreshStudentLocations()
     }
 
     @IBAction func editInfo(sender: AnyObject) {

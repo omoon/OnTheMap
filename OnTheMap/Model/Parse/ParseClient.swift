@@ -11,20 +11,20 @@ import MapKit
 
 class ParseClient: NSObject {
 
-    static let sharedInstance = ParseClient()
+    static let sharedInstance: ParseClient = ParseClient()
 
     let udacityClient = UdacityClient.sharedInstance
+    var studentLocations = StudentLocations.sharedInstance
 
-    var studentLocations = [StudentInformation]()
     var myLocations = [StudentInformation]()
 
     // shared session
     var session = NSURLSession.sharedSession()
 
-    func getStudentLocations(completionHander: (success:Bool, errorString:String?) -> Void) {
+    func getStudentLocations(completionHandler: (success:Bool, errorString:String?) -> Void) {
 
         // clear
-        studentLocations = [StudentInformation]()
+        studentLocations.locations = [StudentInformation]()
         myLocations = [StudentInformation]()
 
         let task = taskForGETMethod(Methods.StudentLocation, parameters: ["limit": 100, "order": "-updatedAt"]) {
@@ -33,7 +33,7 @@ class ParseClient: NSObject {
                 if let results = result[ResponseKeys.StudentLocationsResults] as? [[String:AnyObject]] {
                     for studentInfo in results {
                         let newStudentInfo = StudentInformation(info: studentInfo)
-                        self.studentLocations.append(newStudentInfo)
+                        self.studentLocations.locations.append(newStudentInfo)
 
                         // skip invalid data
                         if newStudentInfo.uniqueKey == nil {
@@ -46,10 +46,10 @@ class ParseClient: NSObject {
                         }
                     }
                 }
-                completionHander(success: true, errorString: nil)
+                completionHandler(success: true, errorString: nil)
             } else {
                 print(error)
-                completionHander(success: false, errorString: "Could not fetch locations.")
+                completionHandler(success: false, errorString: "Could not fetch locations.")
             }
         }
         task.resume()

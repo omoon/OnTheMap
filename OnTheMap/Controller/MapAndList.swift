@@ -25,7 +25,7 @@ extension MapAndList where Self: UIViewController {
         if let url = NSURL(string: urlString) {
             UIApplication.sharedApplication().openURL(url)
         } else {
-            self.presentViewController(createAlert("", message: "Invalid URL"), animated: true, completion: nil)
+            showAlert(self, title: "", message: "Invalid URL")
         }
     }
 

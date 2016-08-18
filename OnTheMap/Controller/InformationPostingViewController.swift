@@ -83,7 +83,7 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
             if let error = error {
                 print("There was an error searching for: \(request.naturalLanguageQuery) error: \(error)")
                 performUIUpdatesOnMain({
-                    self.presentViewController(self.createAlert("Location Not Found", message: "Try again, please😊"), animated: true, completion: nil)
+                    self.showAlert(self, title: "Location Not Found", message: "Try again, please😊")
                 })
             } else {
                 for item in response!.mapItems {
@@ -119,7 +119,7 @@ class InformationPostingViewController: UIViewController, MKMapViewDelegate, UIT
                 self.dismissViewControllerAnimated(true, completion: nil)
             } else {
                 performUIUpdatesOnMain({
-                    self.presentViewController(self.createAlert("Error", message: "Could not submit your location.\nTry again, please😊"), animated: true, completion: nil)
+                    self.showAlert(self, title: "Error", message: "Could not submit your location.\nTry again, please😊")
                 })
             }
         }

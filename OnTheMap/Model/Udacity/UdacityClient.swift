@@ -238,12 +238,4 @@ class UdacityClient: NSObject {
 
     }
 
-//    // MARK: Shared Instance
-//    
-//    class func sharedInstance() -> UdacityClient {
-//        struct Singleton {
-//            static var sharedInstance = UdacityClient()
-//        }
-//        return Singleton.sharedInstance
-//    }
 }

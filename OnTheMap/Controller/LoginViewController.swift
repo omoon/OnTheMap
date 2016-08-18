@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.enableInputElements(false)
 
         if error != nil {
-            self.presentViewController(self.createAlert("Error", message: "Could not login.\nTry again, please😊"), animated: true, completion: nil)
+            self.showAlert(self, title: "Error", message: "Could not login.\nTry again, please😊")
             self.enableInputElements(true)
             Loading.finishLoading()
         } else if result.isCancelled {
@@ -54,7 +54,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     if success {
                         self.completeLogin()
                     } else {
-                        self.presentViewController(self.createAlert("Error", message: "Could not login.\nTry again, please😊"), animated: true, completion: nil)
+                        self.showAlert(self, title: "Error", message: "Could not login.\nTry again, please😊")
                     }
                 }
             }
@@ -79,7 +79,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 if success {
                     self.completeLogin()
                 } else {
-                    self.presentViewController(self.createAlert("Error", message: "Invalid username or password.\nTry again, please😊"), animated: true, completion: nil)
+                    self.showAlert(self, title: "Error", message: "Invalid username or password.\nTry again, please😊")
                 }
                 self.enableInputElements(true)
                 Loading.finishLoading()

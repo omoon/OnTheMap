@@ -33,7 +33,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, MapAndList {
                     self.drawAnnotation()
                 } else {
                     performUIUpdatesOnMain({
-                        self.presentViewController(self.createAlert("Error", message: "Could not fetch locations."), animated: true, completion: nil)
+                        self.showAlert(self, title: "Error", message: "Could not fetch locations.")
                     })
                 }
                 Loading.finishLoading()

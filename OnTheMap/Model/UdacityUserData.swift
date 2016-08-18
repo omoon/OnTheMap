@@ -15,8 +15,8 @@ struct UdacityUserData {
     let location: String?
     let websiteURL: String?
     let linkedinURL: String?
-    
-    init(userData: [String: AnyObject?]) {
+
+    init(userData: [String:AnyObject?]) {
         self.key = userData[UdacityClient.ResponseKeys.UserDataKey] as? String
         self.firstName = userData[UdacityClient.ResponseKeys.UserDataFirstName] as? String
         self.lastName = userData[UdacityClient.ResponseKeys.UserDataLastName] as? String

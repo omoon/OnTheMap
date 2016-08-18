@@ -15,28 +15,28 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var textFieldPassword: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     var fbLoginButton: FBSDKLoginButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
         fbLoginButton = FBSDKLoginButton.init()
         fbLoginButton.center = self.view.center
         self.view.addSubview(fbLoginButton)
         fbLoginButton.delegate = self
-        
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        
+
         Loading.startLoading()
         self.enableInputElements(false)
-        
+
         if error != nil {
             self.presentViewController(self.createAlert("Error", message: "Could not login.\nTry again, please😊"), animated: true, completion: nil)
             self.enableInputElements(true)
@@ -46,7 +46,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             Loading.finishLoading()
         } else {
             let udacityClient = UdacityClient.sharedInstance
-            udacityClient.loginWithFaceBookLogin(result.token.tokenString) { (success, errorString) in
+            udacityClient.loginWithFaceBookLogin(result.token.tokenString) {
+                (success, errorString) in
                 performUIUpdatesOnMain {
                     self.enableInputElements(true)
                     Loading.finishLoading()
@@ -58,21 +59,22 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 }
             }
         }
-        
+
     }
-    
+
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        
+
     }
-    
+
     @IBAction func pressLogin(sender: AnyObject) {
-        
+
         let udacityClient = UdacityClient.sharedInstance
-        
+
         Loading.startLoading()
         self.enableInputElements(false)
-        
-        udacityClient.loginWithUsernameAndPassword(self) { (success, errorString) in
+
+        udacityClient.loginWithUsernameAndPassword(self) {
+            (success, errorString) in
             performUIUpdatesOnMain {
                 if success {
                     self.completeLogin()
@@ -84,14 +86,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
         }
     }
-    
+
     private func enableInputElements(enabled: Bool) {
         self.textFieldUsername.enabled = enabled
         self.textFieldPassword.enabled = enabled
         self.loginButton.enabled = enabled
         self.fbLoginButton.hidden = !enabled
     }
-    
+
     private func completeLogin() {
         self.performSegueWithIdentifier("toMainView", sender: self)
     }

@@ -9,26 +9,27 @@
 import UIKit
 
 class ListViewController: UITableViewController, MapAndList {
-    
+
     var selectedRow: Int!
-    
+
     let parseClient = ParseClient.sharedInstance
-    
+
     @IBOutlet weak var buttonEditInfo: UIBarButtonItem!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshStudentLocatons()
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
+
     func refreshStudentLocatons() {
         Loading.startLoading()
-        reloadStudentLocations { (success, errorString) in
-            performUIUpdatesOnMain({ 
+        reloadStudentLocations {
+            (success, errorString) in
+            performUIUpdatesOnMain({
                 if success {
                     self.tableView.reloadData()
                 } else {
@@ -40,35 +41,35 @@ class ListViewController: UITableViewController, MapAndList {
             })
         }
     }
-    
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return parseClient.studentLocations.count
     }
-    
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("listTableViewCell", forIndexPath: indexPath) as UITableViewCell!
         cell.textLabel!.text = parseClient.studentLocations[indexPath.row].name()
         cell.detailTextLabel?.text = parseClient.studentLocations[indexPath.row].mapString
         return cell
     }
-    
+
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         openURL(parseClient.studentLocations[indexPath.row].mediaURL!)
     }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let informationPostingViewController = segue.destinationViewController as! InformationPostingViewController
         informationPostingViewController.test = 2
     }
-    
+
     @IBAction func editInfo(sender: AnyObject) {
         self.showInformationPostingView()
     }
-    
+
     @IBAction func logOut(sender: AnyObject) {
         self.doLogOut()
     }
-    
+
     @IBAction func pressRefresh(sender: AnyObject) {
         refreshStudentLocatons()
     }

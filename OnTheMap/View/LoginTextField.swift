@@ -13,6 +13,6 @@ class LoginTextField: UITextField {
         super.init(coder: aDecoder)!
         self.borderStyle = .RoundedRect
         self.textColor = UIColor.grayColor()
-        
+
     }
 }

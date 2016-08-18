@@ -27,11 +27,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    // Facebook Login
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
 
         Loading.startLoading()
@@ -62,6 +58,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     }
 
+    // Facebook Logout
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
 
     }
@@ -74,12 +71,33 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.enableInputElements(false)
 
         udacityClient.loginWithUsernameAndPassword(self) {
-            (success, errorString) in
+            (success, errorType) in
             performUIUpdatesOnMain {
                 if success {
                     self.completeLogin()
                 } else {
-                    self.showAlert(self, title: "Error", message: "Invalid username or password.\nTry again, please😊")
+                    var message = "Something wrong.."
+                    do {
+                        throw errorType!
+                    } catch UdacityErrors.NoUsername {
+                        message = "Email is required"
+
+                    } catch UdacityErrors.NoPassword {
+                        message = "Password is required"
+
+                    } catch UdacityErrors.InvalidStatusCode(let response) {
+                        print("\(response)")
+                        message = "Invalid username or password"
+
+                    } catch UdacityErrors.ResponseError(let error) {
+                        message = error!.localizedDescription
+
+                    } catch {
+                        print("\(errorType)")
+
+                    }
+
+                    self.showAlert(self, title: "Error", message: message)
                 }
                 self.enableInputElements(true)
                 Loading.finishLoading()

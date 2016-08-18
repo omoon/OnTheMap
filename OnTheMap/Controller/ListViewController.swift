@@ -18,14 +18,15 @@ class ListViewController: UITableViewController, MapAndList {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        refreshStudentLocatons()
+        refreshStudentLocations()
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.tableView.reloadData()
     }
 
-    func refreshStudentLocatons() {
+    func refreshStudentLocations() {
         Loading.startLoading()
         reloadStudentLocations {
             (success, errorString) in
@@ -71,6 +72,6 @@ class ListViewController: UITableViewController, MapAndList {
     }
 
     @IBAction func pressRefresh(sender: AnyObject) {
-        refreshStudentLocatons()
+        refreshStudentLocations()
     }
 }

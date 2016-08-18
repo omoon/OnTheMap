@@ -21,7 +21,7 @@ class ParseClient: NSObject {
     // shared session
     var session = NSURLSession.sharedSession()
 
-    func getStudentLocations(completionHandler: (success:Bool, errorString:String?) -> Void) {
+    func getStudentLocations(completionHandler: (success:Bool, error:ErrorType?) -> Void) {
 
         // clear
         studentLocations.locations = [StudentInformation]()
@@ -46,10 +46,10 @@ class ParseClient: NSObject {
                         }
                     }
                 }
-                completionHandler(success: true, errorString: nil)
+                completionHandler(success: true, error: nil)
             } else {
                 print(error)
-                completionHandler(success: false, errorString: "Could not fetch locations.")
+                completionHandler(success: false, error: ParseErrors.CannotFetchLocations)
             }
         }
         task.resume()

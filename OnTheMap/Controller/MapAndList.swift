@@ -10,13 +10,13 @@ import UIKit
 import FBSDKLoginKit
 
 protocol MapAndList {
-    func openURL(urlString: String)
-
-    func doLogOut()
-
-    func reloadStudentLocations(completionHander: (success:Bool, errorString:String?) -> Void)
-
-    func showInformationPostingView()
+//    func openURL(urlString: String)
+//
+//    func doLogOut()
+//
+////    func reloadStudentLocations(completionHandler: (success:Bool, error:ErrorType?) -> Void)
+//
+//    func showInformationPostingView()
 }
 
 extension MapAndList where Self: UIViewController {
@@ -46,11 +46,15 @@ extension MapAndList where Self: UIViewController {
 
     }
 
-    func reloadStudentLocations(completionHander: (success:Bool, errorString:String?) -> Void) {
+    func reloadStudentLocations(completionHandler: (success:Bool, error:ErrorType?) -> Void) {
         let parseClient = ParseClient.sharedInstance
         parseClient.getStudentLocations {
-            (success, errorString) in
-            completionHander(success: success, errorString: errorString)
+            (success, errorType) in
+            if success {
+                completionHandler(success: true, error: nil)
+            } else {
+                completionHandler(success: false, error: errorType)
+            }
         }
     }
 

@@ -21,11 +21,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, MapAndList {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.drawAnnotation()
     }
 
     func refreshStudentLocations() {
         Loading.startLoading()
-        mapView.removeAnnotations(mapView.annotations)
         reloadStudentLocations {
             (success, errorString) in
             performUIUpdatesOnMain({
@@ -42,6 +42,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, MapAndList {
     }
 
     private func drawAnnotation() {
+        mapView.removeAnnotations(mapView.annotations)
         let studentLocations = StudentLocations.sharedInstance
         for studentInfo in studentLocations.locations {
             if let latitude = studentInfo.latitude, let longitude = studentInfo.longitude {

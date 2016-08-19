@@ -106,10 +106,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
 
     private func enableInputElements(enabled: Bool) {
-        self.textFieldUsername.enabled = enabled
-        self.textFieldPassword.enabled = enabled
-        self.loginButton.enabled = enabled
-        self.fbLoginButton.hidden = !enabled
+        textFieldUsername.enabled = enabled
+        textFieldPassword.enabled = enabled
+        loginButton.enabled = enabled
+        fbLoginButton.hidden = !enabled
     }
 
     private func completeLogin() {
